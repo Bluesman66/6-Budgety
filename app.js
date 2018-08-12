@@ -1,6 +1,33 @@
 // BUDGET CONTROLLER
 var budgetController = (function () {
 
+    var Expense = function (id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
+
+    var Income = function (id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
+
+    var allExpenses = [];
+    var allIncomes = [];
+    var totalExpenses = 0;
+
+    var data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    };
+
 })();
 
 // UI CONTROLLER
@@ -11,7 +38,7 @@ var UIController = (function () {
         inputDescription: '.add__description',
         inputValue: '.add__value',
         inputBtn: '.add__btn'
-    }
+    };
 
     return {
         getInput: function () {
@@ -24,7 +51,7 @@ var UIController = (function () {
         getDOMStrings: function () {
             return DOMStrings;
         }
-    }
+    };
 
 })();
 
@@ -43,11 +70,11 @@ var controller = (function (bufgetCtrl, UICtrl) {
             }
 
         });
-    }
+    };
 
     var ctrlAddItem = function () {
         // 1. Get the field input data
-        var input = UICtrl.getInput();        
+        var input = UICtrl.getInput();
 
         // 2. Add the item to the BUDGET CONTROLLER
 
@@ -56,14 +83,14 @@ var controller = (function (bufgetCtrl, UICtrl) {
         // 4. Calculate the budget
 
         // 5. Display the budget on the UI
-    }
+    };
 
     return {
         init: function () {
             console.log('Application has started.');
             setupEventListeners();
         }
-    }
+    };
 
 })(budgetController, UIController);
 
